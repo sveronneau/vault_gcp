@@ -1,7 +1,3 @@
-variable "credentials" { 
-  default = "sa-gcp-vault.json" 
-}
-
 variable "project" { 
   default = "tj4h-shared" }
 
