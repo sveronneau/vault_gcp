@@ -1,13 +1,13 @@
 provider "google" {
-  credentials = ${var.credentials}
-  project = ${var.project}
-  region  = ${var.region}
+  credentials = var.credentials
+  project = var.project
+  region  = var.region
 }
 
 resource "google_compute_instance" "ansible" {
   count        = "1"
-  project      = ${var.project}
-  zone         = ${var.zone}
+  project      = var.project
+  zone         = var.zone
   name         = "vault-node-${count.index}"
   machine_type = "f1-micro"
 
