@@ -1,9 +1,9 @@
 variable "credentials" { 
-  default = "your_account.json" 
+  default = "sa-gcp-vault.json" 
 }
 
 variable "project" { 
-  default = "your_project_id" }
+  default = "tj4h-shared" }
 
 variable "region" {
   default = "northamerica-northeast1"
