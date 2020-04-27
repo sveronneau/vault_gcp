@@ -1,0 +1,32 @@
+resource "google_compute_network" "default" {
+  name                    = "vault-vpc"
+  description             = "Vault VPC"
+  auto_create_subnetworks = "false"
+  project                 = "${google_project_services.project.project}"
+}
+
+resource "google_compute_subnetwork" "subnet_na_e1" {
+  name          = "vault-subnet-nane1"
+  description   = "Vault Subnet"
+  ip_cidr_range = "10.0.0.0/16"
+  network       = "${google_compute_network.default.self_link}"
+  region        = "northamerica-northeast1"
+  project       = "${google_project_services.project.project}"
+}
+
+resource "google_compute_firewall" "default" {
+  name    = "vault-vpc-firewall"
+  network = "vault-vpc"
+  project = "${google_project_services.project.project}"
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "8200", "8201"]
+  }
+
+  source_tags = ["vault"]
+}
