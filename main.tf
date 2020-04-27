@@ -31,7 +31,7 @@ resource "google_compute_instance" "default" {
   }
   
    network_interface {
-   subnetwork    = google_compute_subnetwork.vault-subnet-nane1.id
+   subnetwork    = "vault-subnet-nane1"
 
     #access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
