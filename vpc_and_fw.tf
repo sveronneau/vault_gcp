@@ -5,8 +5,7 @@ resource "google_compute_network" "custom1" {
   project                 = var.project
 }
 
-resource "google_compute_subnetwork" "custom1" {
-  depends_on = ["google_compute_network", "module.vpc"]
+resource "google_compute_subnetwork" "custom1" {  
   name          = "vault-subnet-nane1"
   description   = "Vault Subnet"
   ip_cidr_range = "10.0.0.0/16"
