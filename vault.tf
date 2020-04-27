@@ -6,8 +6,8 @@ provider "google" {
 
 resource "google_compute_instance" "ansible" {
   count        = "1"
-  project      = "${var.project}"
-  zone         = "${var.zone}"
+  project      = ${var.project}
+  zone         = ${var.zone}
   name         = "vault-node-${count.index}"
   machine_type = "f1-micro"
 
