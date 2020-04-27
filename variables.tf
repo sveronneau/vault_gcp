@@ -1,3 +1,7 @@
+variable "credentials" {
+  default = "" 
+}
+
 variable "project" {
   default = "tj4h-commons" 
 }
