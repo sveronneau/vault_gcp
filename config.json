@@ -1,0 +1,10 @@
+ui = true
+
+listener "tcp" {
+  address     = "127.0.0.1:8200" #Change this to your internal private IP
+  tls_disable = 1
+}
+
+storage "file" {
+  path = "/etc/vault.d/data"
+}
