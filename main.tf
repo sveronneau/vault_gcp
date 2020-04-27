@@ -25,9 +25,9 @@ resource "google_compute_instance" "default" {
   network_interface {
     network       = "default"
 
-    access_config { //commenting this section will remove private IP assignment
-      // Ephemeral IP
-    }
+    #access_config { //commenting this section will remove private IP assignment
+    #  // Ephemeral IP
+    #}
   }
 
   service_account {
