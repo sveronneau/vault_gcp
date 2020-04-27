@@ -1,7 +1,3 @@
-variable "credentials" {
-  default = "creds.json" 
-}
-
 variable "project" {
   default = "tj4h-commons" 
 }
