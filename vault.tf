@@ -13,7 +13,7 @@ resource "google_compute_instance" "ansible" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-1604-lts"
+      image = "ubuntu-1804-lts"
     }
   }
 
