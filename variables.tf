@@ -3,7 +3,7 @@ variable "credentials" {
 }
 
 variable "project" {
-  default = "tj4h-shared" 
+  default = "tj4h-commons" 
 }
 
 variable "region" {
