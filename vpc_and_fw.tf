@@ -1,22 +1,23 @@
-resource "google_compute_network" "vault-custom-vpc" {
+resource "google_compute_network" "custom1" {
   name                    = "vault-vpc"
   description             = "Vault VPC"
   auto_create_subnetworks = "false"
   project                 = var.project
 }
 
-resource "google_compute_subnetwork" "vault-custom-vpc-subnetwork" {
+resource "google_compute_subnetwork" "custom1" {
+  depends_on = ["google_compute_network", "module.vpc"]
   name          = "vault-subnet-nane1"
   description   = "Vault Subnet"
   ip_cidr_range = "10.0.0.0/16"
-  network       = "google_compute_network.vault-custom-vpc.self_link"
+  network       = "google_compute_network.custom1.self_link"
   region        = "northamerica-northeast1"
   project       = var.project
 }
 
-resource "google_compute_firewall" "vault-vpc-firewall" {
+resource "google_compute_firewall" "custom1" {
   name    = "vault-vpc-firewall"
-  network = "vault-vpc"
+  network = "google_compute_network.custom1.self_link"
   project = var.project
 
   allow {
