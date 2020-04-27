@@ -4,7 +4,7 @@ provider "google" {
   region  = var.region
 }
 
-resource "google_compute_instance" "ansible" {
+resource "google_compute_instance" "default" {
   count        = "1"
   project      = var.project
   zone         = var.zone
