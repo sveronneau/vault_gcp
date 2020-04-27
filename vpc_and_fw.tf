@@ -5,7 +5,7 @@ resource "google_compute_network" "vault-custom-vpc" {
   project                 = var.project
 }
 
-resource "google_compute_subnetwork" "vault-vpc-subnetwork" {
+resource "google_compute_subnetwork" "vault-custom-vpc-subnetwork" {
   name          = "vault-subnet-nane1"
   description   = "Vault Subnet"
   ip_cidr_range = "10.0.0.0/16"
