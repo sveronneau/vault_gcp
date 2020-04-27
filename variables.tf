@@ -11,5 +11,5 @@ variable "region" {
 }
 
 variable "zone" {
-  default = "northamerica-northeast1-a" 
+  default = "northamerica-northeast1-c" 
 }
