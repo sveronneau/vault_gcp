@@ -30,13 +30,13 @@ resource "google_compute_instance" "default" {
     #}
   }
   
-   network_interface {
-   #subnetwork    = "vault-subnet-nane1"
+  #network_interface {
+    #subnetwork    = "vault-subnet-nane1"
 
     #access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
     #}
-  }
+  #}
 
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
