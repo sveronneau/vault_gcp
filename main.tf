@@ -4,41 +4,36 @@ provider "google" {
   region  = var.region
 }
 
-resource "google_compute_instance" "default" {
-  count        = "1"
-  project      = var.project
-  zone         = var.zone
-  name         = "vault-node-${count.index}"
-  machine_type = "f1-micro"
-
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-1804-lts"
-    }
-  }
-
-# This is where we configure the instance with ansible-playbook
-  #provisioner "local-exec" {
-  #  command = "sleep 90; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u your_sshkey_user --private-key your_private_key -i '${google_compute_instance.ansible.network_interface.0.access_config.0.assigned_nat_ip}', master.yml"
-  #  }
-  
-  network_interface {
-    network       = "default"
-
-    #access_config { //commenting this section will remove private IP assignment
-    #  // Ephemeral IP
-    #}
-  }
-  
-  network_interface {
-    subnetwork    = "vault-subnet-nane1"
-
-    #access_config { //commenting this section will remove private IP assignment
-    #  // Ephemeral IP
-    #}
-  }
-
-  service_account {
-    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
-  }
+resource "google_compute_network" "default" {
+  name                    = "vault-vpc"
+  description             = "Vault VPC"
+  auto_create_subnetworks = "false"
+  project                 = var.project
 }
+
+resource "google_compute_subnetwork" "subnet_nane1" {  
+  name          = "vault-subnet-nane1"
+  description   = "Vault Subnet"
+  ip_cidr_range = "10.0.0.0/16"
+  network       = google_compute_network.default.self_link
+  region        = "northamerica-northeast1"
+  project       = var.project
+}
+
+resource "google_compute_firewall" "default" {
+  name    = "vault-vpc-firewall"
+  network = google_compute_network.default.self_link
+  project = var.project
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "8200", "8201"]
+  }
+
+  source_tags = ["vault"]
+}
+
