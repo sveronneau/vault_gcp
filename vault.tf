@@ -35,4 +35,6 @@ resource "google_compute_instance" "vault" {
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
   }
+  
+  depends_on = [google_compute_subnetwork.subnet_nane1]
 }
