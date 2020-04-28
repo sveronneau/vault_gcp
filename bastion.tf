@@ -35,5 +35,5 @@ resource "google_compute_instance" "bastion" {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
   }
   
-  depends_on = [google_compute_subnetwork.subnet_nane1]
+  depends_on = [google_compute_subnetwork.vault_subnet_nane1]
 }
