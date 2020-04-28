@@ -20,7 +20,7 @@ resource "google_compute_subnetwork" "subnet_nane1" {
   project       = var.project
 }
 
-resource "google_compute_firewall" "default" {
+resource "google_compute_firewall" "vault-vpc-fw" {
   name    = "vault-vpc-firewall"
   network = google_compute_network.vault-vpc.self_link
   project = var.project
