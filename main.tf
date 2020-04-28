@@ -11,11 +11,27 @@ resource "google_compute_network" "vault-vpc" {
   project                 = var.project
 }
 
-resource "google_compute_subnetwork" "subnet_nane1" {  
+resource "google_compute_network" "consul-vpc" {
+  name                    = "consul-vpc"
+  description             = "Consul VPC"
+  auto_create_subnetworks = "false"
+  project                 = var.project
+}
+
+resource "google_compute_subnetwork" "vault_subnet_nane1" {  
   name          = "vault-subnet-nane1"
   description   = "Vault Subnet"
-  ip_cidr_range = "10.0.0.0/16"
+  ip_cidr_range = "10.0.1.0/24"
   network       = google_compute_network.vault-vpc.self_link
+  region        = "northamerica-northeast1"
+  project       = var.project
+}
+
+resource "google_compute_subnetwork" "consul_subnet_nane1" {  
+  name          = "consul-subnet-nane1"
+  description   = "Consul Subnet"
+  ip_cidr_range = "10.0.2.0/24"
+  network       = google_compute_network.consul-vpc.self_link
   region        = "northamerica-northeast1"
   project       = var.project
 }
@@ -37,3 +53,19 @@ resource "google_compute_firewall" "vault-vpc-fw" {
   source_tags = ["vault"]
 }
 
+resource "google_compute_firewall" "consul-vpc-fw" {
+  name    = "consul-vpc-firewall"
+  network = google_compute_network.consul-vpc.self_link
+  project = var.project
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "8500"]
+  }
+
+  source_tags = ["consul"]
+}
