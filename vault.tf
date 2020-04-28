@@ -1,4 +1,4 @@
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "vault" {
   count        = "3"
   project      = var.project
   zone         = var.zone
