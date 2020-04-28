@@ -36,6 +36,5 @@ resource "google_compute_instance" "consul" {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
   }
   
-  depends_on = [google_compute_subnetwork.consul_subnet_nane1]
-  depends_on = [google_compute_instance.vault]
+  depends_on = [google_compute_subnetwork.consul_subnet_nane1, google_compute_instance.vault]
 }
