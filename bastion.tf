@@ -1,4 +1,4 @@
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "bastion" {
   project      = var.project
   zone         = var.zone
   name         = "vault-bastion"
