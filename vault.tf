@@ -7,7 +7,7 @@ resource "google_compute_instance" "vault" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-1804-lts"
+      image = "vault-base"
     }
   }
 
