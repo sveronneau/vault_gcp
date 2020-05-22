@@ -45,5 +45,5 @@ resource "google_compute_disk" "vault" {
   zone    = var.zone
   name    = "vault-data-${count.index}"
   type    = "pd-ssd"
-  size    = "200"
+  size    = "150"
 }
