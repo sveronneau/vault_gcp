@@ -3,8 +3,7 @@ resource "google_compute_attached_disk" "vault" {
   project      = var.project
   zone         = var.zone  
   disk     = "vault-data-${count.index}"  
-  instance = "vault-${count.index}"  
-  depends_on = [google_compute_instance.vault]
+  instance = "vault-${count.index}"    
   depends_on = [google_compute_disk.vault]
 }
 
@@ -62,4 +61,5 @@ resource "google_compute_disk" "vault" {
   name    = "vault-data-${count.index}"
   type    = "pd-ssd"
   size    = "150"
+  depends_on = [google_compute_instance.vault]
 }
