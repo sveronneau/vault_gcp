@@ -51,8 +51,8 @@ resource "google_compute_firewall" "vault-vpc-fw" {
   source_tags = ["vault"]
 }
 
-resource "google_compute_firewall" "vault-vpc-iap-fw" {
-  name    = "vault-vpc-firewall"
+resource "google_compute_firewall" "vault-vpc-fw-iap" {
+  name    = "vault-vpc-firewall-iap"
   network = google_compute_network.vault-vpc.self_link
   project = var.project
 
