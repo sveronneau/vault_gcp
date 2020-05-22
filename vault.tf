@@ -14,6 +14,8 @@ resource "google_compute_instance" "vault" {
   name         = "vault-${count.index}"
   machine_type = "f1-micro"
 
+  tags = ["vault"]
+  
   boot_disk {
     initialize_params {
       image = "vault14"
