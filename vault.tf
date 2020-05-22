@@ -50,7 +50,7 @@ resource "google_compute_instance" "vault" {
     ignore_changes = [attached_disk]
   }
   
-  metadata_startup_script = “${file(“startup-script.sh”)}”
+  metadata_startup_script = "${file("./startup-script.sh")}"
 }
 
 resource "google_compute_disk" "vault" {
