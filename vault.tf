@@ -49,6 +49,8 @@ resource "google_compute_instance" "vault" {
   lifecycle {
     ignore_changes = [attached_disk]
   }
+  
+  metadata_startup_script = "echo hi > /test.txt"
 }
 
 resource "google_compute_disk" "vault" {
