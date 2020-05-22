@@ -1,7 +1,7 @@
 resource "google_compute_attached_disk" "vault" {
   count    = "3"
-  disk     = vault-data-${count.index}
-  instance = vault-${count.index}
+  disk     = "vault-data-${count.index}"  
+  instance = "vault-${count.index}"  
 }
 
 resource "google_compute_instance" "vault" {
