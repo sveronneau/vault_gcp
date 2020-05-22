@@ -1,3 +1,8 @@
+resource "google_compute_attached_disk" "vault" {
+  disk     = google_compute_disk.vault.id
+  instance = google_compute_instance.vault.id
+}
+
 resource "google_compute_instance" "vault" {
   count        = "3"
   project      = var.project
