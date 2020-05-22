@@ -5,7 +5,7 @@ resource "google_compute_attached_disk" "vault" {
   disk     = "vault-data-${count.index}"  
   instance = "vault-${count.index}"  
   depends_on = [google_compute_instance.vault]
-  depends_on = [google_compute_diskvault]
+  depends_on = [google_compute_disk.vault]
 }
 
 resource "google_compute_instance" "vault" {
