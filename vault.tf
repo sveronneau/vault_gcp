@@ -43,6 +43,10 @@ resource "google_compute_instance" "vault" {
   }
   
   depends_on = [google_compute_subnetwork.vault_subnet_nane1]
+  
+  lifecycle {
+    ignore_changes = [attached_disk]
+  }
 }
 
 resource "google_compute_disk" "vault" {
