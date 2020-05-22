@@ -47,6 +47,12 @@ resource "google_compute_firewall" "vault-vpc-fw" {
     protocol = "tcp"
     ports    = ["22", "8200", "8201"]
   }
+  
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+    source_ranges = "35.235.240.0/20"
+  }
 
   source_tags = ["vault"]
 }
