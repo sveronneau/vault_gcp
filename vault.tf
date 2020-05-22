@@ -2,12 +2,12 @@ resource "google_compute_instance" "vault" {
   count        = "3"
   project      = var.project
   zone         = var.zone
-  name         = "vault-node-${count.index}"
+  name         = "vault-${count.index}"
   machine_type = "f1-micro"
 
   boot_disk {
     initialize_params {
-      image = "vault-base"
+      image = "vault14"
     }
   }
 
