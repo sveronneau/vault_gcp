@@ -1,5 +1,7 @@
 resource "google_compute_attached_disk" "vault" {
   count    = "3"
+  project      = var.project
+  zone         = var.zone  
   disk     = "vault-data-${count.index}"  
   instance = "vault-${count.index}"  
 }
