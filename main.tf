@@ -4,6 +4,11 @@ provider "google" {
   region  = var.region
 }
 
+# Locks the version of Terraform for this particular use case
+terraform {
+  required_version = "~>0.12.0"
+}
+
 resource "google_compute_network" "vault-vpc" {
   name                    = "vault-vpc"
   description             = "Vault VPC"
