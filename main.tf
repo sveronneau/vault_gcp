@@ -48,11 +48,18 @@ resource "google_compute_firewall" "vault-vpc-fw" {
     ports    = ["22", "8200", "8201"]
   }
   
+  source_tags = ["vault"]
+}
+
+resource "google_compute_firewall" "vault-vpc-iap-fw" {
+  name    = "vault-vpc-firewall"
+  network = google_compute_network.vault-vpc.self_link
+  project = var.project
+
   allow {
     protocol = "tcp"
     ports    = ["22"]
-    source_ranges = "35.235.240.0/20"
   }
-
-  source_tags = ["vault"]
+  
+  source_ranges = ["35.235.240.0/20"]
 }
