@@ -10,13 +10,7 @@ resource "google_compute_instance" "vault" {
       image = "vault14"
     }
   }
-
-resource "google_compute_disk" "vault" {
-  name  = "vault-data-${count.index}"
-  type  = "pd-ssd"
-  zone  = var.zone
-}
-  
+ 
 # This is where we configure the instance with ansible-playbook
   #provisioner "local-exec" {
   #  command = "sleep 90; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u your_sshkey_user --private-key your_private_key -i '${google_compute_instance.ansible.network_interface.0.access_config.0.assigned_nat_ip}', master.yml"
@@ -43,4 +37,10 @@ resource "google_compute_disk" "vault" {
   }
   
   depends_on = [google_compute_subnetwork.vault_subnet_nane1]
+}
+
+resource "google_compute_disk" "vault" {
+  name  = "vault-data-${count.index}"
+  type  = "pd-ssd"
+  zone  = var.zone
 }
