@@ -40,7 +40,9 @@ resource "google_compute_instance" "vault" {
 }
 
 resource "google_compute_disk" "vault" {
-  name  = "vault-data-${count.index}"
-  type  = "pd-ssd"
-  zone  = var.zone
+  count   = "3"
+  project = var.project
+  zone    = var.zone
+  name    = "vault-data-${count.index}"
+  type    = "pd-ssd"
 }
