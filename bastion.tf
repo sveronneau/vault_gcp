@@ -3,7 +3,9 @@ resource "google_compute_instance" "bastion" {
   zone         = var.zone
   name         = "vault-bastion"
   machine_type = "f1-micro"
-
+  
+  tags = ["vault"]
+  
   boot_disk {
     initialize_params {
       image = "ubuntu-2004-lts"
