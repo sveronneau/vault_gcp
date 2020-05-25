@@ -30,7 +30,7 @@ resource "google_compute_subnetwork" "vault_reserved_ilb_subnet_nane1" {
   description   = "Vault Reserved ILB Subnet"
   ip_cidr_range = "10.0.3.0/26"
   network       = google_compute_network.vault-vpc.self_link
-  region        = "northamerica-northeast1"
+  region        = var.region
   project       = var.project
 }
 
