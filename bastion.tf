@@ -12,10 +12,9 @@ resource "google_compute_instance" "bastion" {
     }
   }
 
-# This is where we configure the instance with ansible-playbook
-  #provisioner "local-exec" {
-  #  command = "sleep 90; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u your_sshkey_user --private-key your_private_key -i '${google_compute_instance.ansible.network_interface.0.access_config.0.assigned_nat_ip}', master.yml"
-  #  }
+  provisioner "local-exec" {
+    command = "sudo wget https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip ; sudo apt-get install unzip ; sudo unzip vault_1.4.2_linux_amd64.zip"
+    }
 
   network_interface {
     network       = "default"
