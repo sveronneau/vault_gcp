@@ -12,10 +12,6 @@ resource "google_compute_instance" "bastion" {
     }
   }
 
-  provisioner "local-exec" {
-    command = "wget https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip ; apt-get install update -y ; sudo apt-get install unzip -y; unzip vault_1.4.2_linux_amd64.zip"
-    }
-
   network_interface {
     network       = "default"
 
