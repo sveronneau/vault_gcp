@@ -50,7 +50,6 @@ resource "google_compute_disk" "vault" {
 }
 
 resource "google_compute_instance_group" "vault-umig" {
-  count       = var.instance_count
   name        = "vault-umig"
   description = "Vault unmaged instance group"
   zone        = var.zone
@@ -58,6 +57,11 @@ resource "google_compute_instance_group" "vault-umig" {
   
   instances = [
     google_compute_instance.vault[count.index]
+  ]
+  
+  instances = [
+    google_compute_instance.test.self_link,
+    google_compute_instance.test2.self_link,
   ]
   
   named_port {
