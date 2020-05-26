@@ -69,7 +69,6 @@ resource "google_compute_instance_group" "vault-umig" {
   description = "Vault unmanaged instance group"
   zone        = var.zone
   network     = google_compute_network.vault-vpc.self_link
-  count       = var.instance_count
   
   named_port {
     name = "vault-http"
