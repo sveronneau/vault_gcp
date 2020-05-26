@@ -13,3 +13,7 @@ variable "region" {
 variable "zone" {
   default = "northamerica-northeast1-c" 
 }
+
+variable "instance_count" {
+  default = "3" 
+}
