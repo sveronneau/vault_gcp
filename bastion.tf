@@ -28,6 +28,8 @@ resource "google_compute_instance" "bastion" {
     #}
   }
 
+  metadata_startup_script = "apt update -y ; apt upgrade -y ; apt install unzip wget -y ; wget https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip /tmp/ ; unzip /tmp/vault_1.4.2_linux_amd64.zip -d /usr/local/bin"
+  
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
   }
