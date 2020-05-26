@@ -63,20 +63,3 @@ resource "google_compute_firewall" "vault-vpc-fw-iap" {
   
   source_ranges = ["35.235.240.0/20"]
 }
-
-resource "google_compute_instance_group" "vault-umig" {
-  name        = "vault-umig"
-  description = "Vault unmanaged instance group"
-  zone        = var.zone
-  network     = google_compute_network.vault-vpc.self_link
-    
-  named_port {
-    name = "vault-http"
-    port = "8200"
-  }
-
-  named_port {
-    name = "vault-https"
-    port = "8201"
-  }
-}
