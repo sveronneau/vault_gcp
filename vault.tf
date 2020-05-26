@@ -56,8 +56,10 @@ resource "google_compute_instance_group" "vault-umig" {
   zone        = var.zone
   network     = google_compute_network.vault-vpc.self_link
   
-  instances = google_compute_instance.vault[count.index]
-
+  instances = [
+    google_compute_instance.vault.self_link
+  ]
+  
   named_port {
     name = "vault-http"
     port = "8200"
