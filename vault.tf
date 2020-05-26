@@ -24,10 +24,6 @@ resource "google_compute_instance" "vault" {
  
   network_interface {
     subnetwork    = "vault-subnet-nane1"
-
-    #access_config { //commenting this section will remove private IP assignment
-    #  // Ephemeral IP
-    #}
   }
 
   service_account {
@@ -51,4 +47,25 @@ resource "google_compute_disk" "vault" {
   type       = "pd-ssd"
   size       = "150"
   depends_on = [google_compute_instance.vault]
+}
+
+resource "google_compute_instance_group" "vault-umig" {
+  name        = "vault-umig"
+  description = "Vault unmaged instance group"
+  zone        = var.zone
+  network     = google_compute_network.vault-vpc.self_link
+  
+  instances = [
+    google_compute_instance.vault.self_link
+  ]
+
+  named_port {
+    name = "vault-http"
+    port = "8200"
+  }
+
+  named_port {
+    name = "vault-https"
+    port = "8201"
+  }
 }
