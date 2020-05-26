@@ -56,7 +56,8 @@ resource "google_compute_instance_group" "vault-umig" {
   zone        = var.zone
   network     = google_compute_network.vault-vpc.self_link
   
-  instances = [
+  instances = "vault-${count.index}" 
+  //[
     google_compute_instance.vault[count.index]
   ]
 
