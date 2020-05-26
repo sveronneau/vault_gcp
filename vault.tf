@@ -54,6 +54,7 @@ resource "google_compute_instance_group" "vault-umig" {
   description = "Vault unmaged instance group"
   zone        = var.zone
   network     = google_compute_network.vault-vpc.self_link
+  count       = var.instance_count
   
   instances = [
     google_compute_instance.vault[count.index].self_link
