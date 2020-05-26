@@ -11,17 +11,7 @@ resource "google_compute_instance" "bastion" {
       image = "ubuntu-2004-lts"
     }
   }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt update -y",
-      "sudo apt install unzip wget -y",
-      "sudo apt upgrade -y",
-      "wget https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip",
-      "unzip vault_1.4.2_linux_amd64.zip -d /usr/local/bin",
-    ]
-  }
-  
+ 
   network_interface {
     network       = "default"
 
