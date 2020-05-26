@@ -15,9 +15,9 @@ resource "google_compute_instance" "bastion" {
   network_interface {
     network       = "default"
 
-    #access_config { //commenting this section will remove private IP assignment
+    access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
-    #}
+    }
   }
 
   network_interface {
