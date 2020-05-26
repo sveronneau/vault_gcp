@@ -49,7 +49,7 @@ resource "google_compute_disk" "vault" {
   depends_on = [google_compute_instance.vault]
 }
 
-resource "google_compute_instance_group" "vault-umig" {
+resource "google_compute_instance_group" "vault-umig-instances" {
   count       = var.instance_count
   zone        = var.zone
   network     = google_compute_instance_group.vault-umig.self_link
