@@ -57,7 +57,7 @@ resource "google_compute_instance_group" "vault-umig" {
   network     = google_compute_network.vault-vpc.self_link
   
   instances = [
-    google_compute_instance.vault.self_link
+    google_compute_instance.vault[count.index]
   ]
   
   named_port {
