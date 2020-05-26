@@ -48,27 +48,3 @@ resource "google_compute_disk" "vault" {
   size       = "150"
   depends_on = [google_compute_instance.vault]
 }
-
-resource "google_compute_instance_group" "vault-umig" {
-  name        = "vault-umig"
-  description = "Vault unmanaged instance group"
-  zone        = var.zone
-  network     = google_compute_network.vault-vpc.self_link
-  count        = var.instance_count
-  
-  instances = google_compute_instance.vault[count.index].self_link
-  
-  named_port {
-    name = "vault-http"
-    port = "8200"
-  }
-
-  named_port {
-    name = "vault-https"
-    port = "8201"
-  }
-  
-  lifecycle {
-    create_before_destroy = true
-  }
-}
