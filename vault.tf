@@ -50,9 +50,10 @@ resource "google_compute_disk" "vault" {
 }
 
 resource "google_compute_instance_group" "vault-umig-instances" {
-  count       = var.instance_count
-  zone        = var.zone
-  network     = google_compute_instance_group.vault-umig.self_link
+  name    = "vault-umig-instances"
+  count   = var.instance_count
+  zone    = var.zone
+  network = google_compute_instance_group.vault-umig.self_link
   
   instances = [
     google_compute_instance.vault[count.index].self_link
