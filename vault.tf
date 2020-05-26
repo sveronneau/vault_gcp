@@ -58,8 +58,8 @@ resource "google_compute_instance_group" "vault-umig" {
   
   instances = "vault-${count.index}" 
   //[
-    google_compute_instance.vault[count.index]
-  ]
+    //google_compute_instance.vault[count.index]
+  //]
 
   named_port {
     name = "vault-http"
