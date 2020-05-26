@@ -57,7 +57,7 @@ resource "google_compute_instance_group" "vault-umig" {
   count       = var.instance_count
   
   instances = [
-    google_compute_instance.vault[count.index].self_link
+    google_compute_instance.vault[count.index]
   ]
   
   named_port {
