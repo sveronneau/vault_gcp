@@ -66,7 +66,7 @@ resource "google_compute_firewall" "vault-vpc-fw-iap" {
 
 resource "google_compute_instance_group" "vault-umig" {
   name        = "vault-umig"
-  description = "Vault unmaged instance group"
+  description = "Vault unmanaged instance group"
   zone        = var.zone
   network     = google_compute_network.vault-vpc.self_link
     
