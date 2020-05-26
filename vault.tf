@@ -48,3 +48,13 @@ resource "google_compute_disk" "vault" {
   size       = "150"
   depends_on = [google_compute_instance.vault]
 }
+
+resource "google_compute_instance_group" "vault-umig" {
+  count       = var.instance_count
+  zone        = var.zone
+  network     = google_compute_instance_group.vault-umig.self_link
+  
+  instances = [
+    google_compute_instance.vault[count.index].self_link
+  ]
+}
