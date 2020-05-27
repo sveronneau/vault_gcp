@@ -12,7 +12,7 @@ resource "google_compute_instance" "vault" {
   project      = var.project
   zone         = var.zone
   name         = "vault-${count.index}"
-  machine_type = "f1-micro"
+  machine_type = var.vault_node_machine_type
 
   tags = ["vault"]
   
@@ -23,7 +23,7 @@ resource "google_compute_instance" "vault" {
   }
  
   network_interface {
-    subnetwork    = "vault-subnet-nane1"
+    subnetwork    = var.vault_vpc_subnet
   }
 
   service_account {
