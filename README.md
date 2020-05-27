@@ -6,3 +6,5 @@ The image used is coming from a Cloud Build pipeline that uses Packer to build t
 https://github.com/sveronneau/cloudbuild-packer-container
 
 This requires a GCP Service Account for proper projects rights.
+
+Please adapt variables.tf but also bastion.tf (if you want to change Vault Client installed on bastion node)
