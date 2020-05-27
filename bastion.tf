@@ -13,7 +13,7 @@ resource "google_compute_instance" "bastion" {
   }
  
   network_interface {
-    network       = "default"
+    network       = var.bastion_vpc
 
     access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
@@ -21,7 +21,7 @@ resource "google_compute_instance" "bastion" {
   }
 
   network_interface {
-    subnetwork    = "vault-subnet-nane1"
+    subnetwork    = var.vault_vpc_subnet
 
     #access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
