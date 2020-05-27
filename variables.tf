@@ -17,3 +17,11 @@ variable "zone" {
 variable "instance_count" {
   default = "3" 
 }
+
+variable "bastion_vpc" {
+  default = "default" 
+}
+
+variable "vault_vpc" {
+  default = "vault-vpc" 
+}
