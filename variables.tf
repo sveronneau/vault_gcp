@@ -29,3 +29,11 @@ variable "vault_vpc" {
 variable "vault_vpc_subnet" {
   default = "vault-subnet-nane1" 
 }
+
+variable "vault_vpc_subnet_cidr" {
+  default = "10.0.1.0/24" 
+}
+
+variable "vault_vpc_subnet_ilb_cidr" {
+  default = "10.0.3.0/26" 
+}
