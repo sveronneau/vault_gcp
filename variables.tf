@@ -37,3 +37,7 @@ variable "vault_vpc_subnet_cidr" {
 variable "vault_vpc_subnet_ilb_cidr" {
   default = "10.0.3.0/26" 
 }
+
+variable "vault_node_machine_type" {
+  default = "f1-micro" 
+}
