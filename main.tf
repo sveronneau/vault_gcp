@@ -84,3 +84,26 @@ resource "google_compute_instance_group" "vault-umig" {
     create_before_destroy = true
   }
 }
+
+resource "google_compute_target_tcp_proxy" "vault-ilb" {
+  name            = "vault-l4-ilb-fes"
+  backend_service = google_compute_backend_service.vault-ilb.id
+}
+
+resource "google_compute_backend_service" "vault-ilb" {
+  name        = "vault-l4-ilb-bes"
+  protocol    = "TCP"
+  timeout_sec = 10
+
+  health_checks = [google_compute_health_check.vault-ilb.id]
+}
+
+resource "google_compute_health_check" "vault-ilb" {
+  name               = "health-check"
+  timeout_sec        = 1
+  check_interval_sec = 1
+
+  tcp_health_check {
+    port = "8200"
+  }
+}
