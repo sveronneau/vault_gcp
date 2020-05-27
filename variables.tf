@@ -25,3 +25,7 @@ variable "bastion_vpc" {
 variable "vault_vpc" {
   default = "vault-vpc" 
 }
+
+variable "vault_vpc_subnet" {
+  default = "vault-subnet-nane1" 
+}
