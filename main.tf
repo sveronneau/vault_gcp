@@ -19,16 +19,16 @@ resource "google_compute_network" "vault-vpc" {
 resource "google_compute_subnetwork" "vault_subnet_nane1" {  
   name          = "vault-subnet-nane1"
   description   = "Vault Subnet"
-  ip_cidr_range = "10.0.1.0/24"
+  ip_cidr_range = var.vault_vpc_subnet_cidr
   network       = google_compute_network.vault-vpc.self_link
-  region        = "northamerica-northeast1"
+  region        = var.region
   project       = var.project
 }
 
 resource "google_compute_subnetwork" "vault_reserved_ilb_subnet_nane1" {  
   name          = "vault-reserved-ilb-subnet-nane1"
   description   = "Vault Reserved ILB Subnet"
-  ip_cidr_range = "10.0.3.0/26"
+  ip_cidr_range = var.vault_vpc_subnet_ilb_cidr
   network       = google_compute_network.vault-vpc.self_link
   region        = var.region
   project       = var.project
