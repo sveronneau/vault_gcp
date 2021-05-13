@@ -48,3 +48,7 @@ resource "google_compute_disk" "vault" {
   size       = "150"
   depends_on = [google_compute_instance.vault]
 }
+
+output "ip" {
+  value = google_compute_address.vm_static_ip.address
+}
