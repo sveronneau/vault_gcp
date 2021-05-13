@@ -34,6 +34,6 @@ resource "google_compute_instance" "bastion" {
   depends_on = [google_compute_subnetwork.vault_subnet_nane1]
 }
 
-output "ip" {
+output "bastion_ip" {
   value = google_compute_address.vm_static_ip.address
 }
