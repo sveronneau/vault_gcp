@@ -21,7 +21,8 @@ resource "google_compute_instance" "bastion" {
   }
 
   network_interface {
-    subnetwork    = var.vault_vpc_subnet
+    subnetwork    = var.bastion_vpc_subnet
+  }    
 
     #access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
