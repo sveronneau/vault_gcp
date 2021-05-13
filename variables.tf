@@ -19,7 +19,7 @@ variable "instance_count" {
 }
 
 variable "bastion_vpc" {
-  default = "default" 
+  default = "chatbot-sandbox-tj4h-vpc1" 
 }
 
 variable "vault_vpc" {
