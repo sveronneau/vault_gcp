@@ -48,7 +48,3 @@ resource "google_compute_disk" "vault" {
   size       = "150"
   depends_on = [google_compute_instance.vault]
 }
-
-output "vault_ip" {
-  value = "${google_compute_instance.subnetwork.network_interface.0.access_config.0.nat_ip}"
-}
