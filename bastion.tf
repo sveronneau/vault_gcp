@@ -23,7 +23,7 @@ resource "google_compute_instance" "bastion" {
     #access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
     #}
-  }
+  #}
 
   metadata_startup_script = "apt update -y ; apt upgrade -y ; apt install unzip wget -y ; wget -P /tmp/ https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip ; unzip /tmp/vault_1.4.2_linux_amd64.zip -d /usr/local/bin ; rm -f /tmp/vault_1.4.2_linux_amd64.zip"
   
@@ -31,5 +31,5 @@ resource "google_compute_instance" "bastion" {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
   }
   
-  #depends_on = [google_compute_subnetwork.vault_subnet_nane1]
+  depends_on = [google_compute_subnetwork.vault_subnet_nane1]
 }
