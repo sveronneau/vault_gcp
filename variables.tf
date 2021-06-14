@@ -19,12 +19,12 @@ variable "instance_count" {
 }
 
 variable "bastion_vpc" {
-  default = "chatbot-sandbox-tj4h-vpc1" 
+  default = "vpc1" 
 }
 
-variable "bastion_vpc_subnet" {
-  default = "chatbot-sandbox-tj4h-sn1" 
-}
+#variable "bastion_vpc_subnet" {
+#  default = "chatbot-sandbox-tj4h-sn1" 
+#}
 
 variable "vault_vpc" {
   default = "vault-vpc" 
