@@ -18,7 +18,7 @@ resource "google_compute_instance" "vault" {
   
   boot_disk {
     initialize_params {
-      image = "vault14"
+      image = "projects/commons-build/global/images/vault14"
     }
   }
  
