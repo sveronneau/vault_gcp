@@ -13,18 +13,17 @@ resource "google_compute_instance" "bastion" {
   }
  
   network_interface {
-  #  subnetwork    = var.bastion_vpc_subnet
-  #  
-  #  access_config { //commenting this section will remove private IP assignment
-  #  #  // Ephemeral IP
-  #  }
-  #}    
-
+    subnetwork    = var.bastion_vpc_subnet
+    
     access_config { //commenting this section will remove private IP assignment
     #  // Ephemeral IP
     }
-  }
-
+  }    
+    #access_config { //commenting this section will remove private IP assignment
+    #  // Ephemeral IP
+    #}
+  #}
+  
   metadata_startup_script = "apt update -y ; apt upgrade -y ; apt install unzip wget -y ; wget -P /tmp/ https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_linux_amd64.zip ; unzip /tmp/vault_1.4.2_linux_amd64.zip -d /usr/local/bin ; rm -f /tmp/vault_1.4.2_linux_amd64.zip"
   
   service_account {
