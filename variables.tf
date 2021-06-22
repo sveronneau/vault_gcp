@@ -46,6 +46,6 @@ variable "vault_node_machine_type" {
   default = "f1-micro" 
 }
 
-variable "vault_node_image" {
+variable "bastion_node_image" {
   default = "ubuntu-2004-lts" 
 }
